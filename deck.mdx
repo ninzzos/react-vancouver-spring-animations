@@ -1,152 +1,136 @@
-import {
-  CodeSurfer,
-  CodeSurferColumns,
-  Step,
-} from "code-surfer";
-import { github, vsDark } from "@code-surfer/themes";
+import { Appear, Notes, Image, Split } from "mdx-deck";
+import { CodeSurfer } from "code-surfer";
+import { nightOwl } from "@code-surfer/themes";
+import { TwitterTweetEmbed } from "react-twitter-embed";
 
-export const theme = vsDark;
+import FadeIn from "./components/FadeIn";
+import Spring from './components/SpringLogo'
+import PullRelease from './components/PullRelease'
+import RotateAnimation from "./components/RotateAnimation";
 
-# Hello 👋
+export const theme = nightOwl;
 
-You are using [MDX Deck](https://github.com/jxnblk/mdx-deck) and [Code Surfer](https://codesurfer.pomb.us)
+# Hi! 👋🏽
+
+<Appear>
+  <p>My name is José Muñoz</p>
+  <p>I'm 25 Years old 🕺🏽</p>
+  <p>I'm Honduran 🇭🇳</p>
+  <span>I'm a Software Engineer 🧑🏽‍💻</span>
+</Appear>
+<Notes>
+  Hi, My name is Jose Munoz, I moved to Vancouver in late
+  November last year, I’ve been a Software Engineer for
+  about 5 years now, I’ve worked on both North and South
+  America, I’m originally from Honduras. , I tried showing
+  this to my mom but she doesn’t know who he is.
+</Notes>
+
+---
+
+<RotateAnimation>
+  I'm here to talk about Spring Animations in React-Native
+</RotateAnimation>
+
+---
+
+<FadeIn>
+  When Dealing with Animations, do any of these sound
+  familiar? 🤔
+</FadeIn>
+<Appear>
+  <p>Easing ↔️</p>
+  <p>Timing ⏰</p>
+  <p>Curves 〰️</p>
+  <p>Duration ⏳</p>
+</Appear>
+<Notes>
+  We think of animation in terms of time and curves, but
+  that in itself causes most of the struggle we face when
+  trying to make elements on the screen move naturally, 
+  what if the user cancels the interaction, should going back
+  be the same duration even though we're not all the way done?
+  Nothing in the real world moves like that.
+</Notes>
+
+---
+
+<TwitterTweetEmbed tweetId="566736015188963328" />
+<Appear>
+  <p>(former Apple UI-Kit developer)</p>  
+</Appear>
+
+<Notes>
+  Andy Matuschak 
+
+  Springs change that, a spring does not have a defined curve or a set duration, springs are cancellable,
+  everything you do looks and feels natural by default, animation becomes easy and approachable.
+  To better illustrate how a spring works, let’s take a look at an online tool called spring visualizer.
+</Notes>
+
+---
+
+<Spring height="120rem" width="120rem" />
+
+# Enter React-Spring
+
+<Notes>
+  With React-native...
+</Notes>
+
+---
+
+<PullRelease />
+
+<Appear>
+  <a href="https://react-spring-visualizer.com/#translateY" target="_blank" rel="noopener noreferrer">Spring Visualizer</a>
+</Appear>
 
 ---
 
 <CodeSurfer>
 
-```js title="This is a title" subtitle="and this a subtitle"
-function lorem(ipsum, dolor = 1) {
-  const sit = ipsum == null ? 0 : ipsum.sit;
-  dolor = sit - amet(dolor);
-  return sit
-    ? consectetur(ipsum, 0, dolor < 0 ? 0 : dolor)
-    : [];
-}
+  ```js file=./components/FadeIn.js 4:11
+  ```
 
-function incididunt(ipsum, ut = 1) {
-  ut = labore.et(amet(ut), 0);
-  const sit = ipsum == null ? 0 : ipsum.sit;
+  ```js file=./components/FadeIn.js 6[5:9],7[5:7]
+  ```
 
-  if (!sit || ut < 1) {
-    return [];
-  }
-
-  let dolore = 0;
-  let magna = 0;
-  const aliqua = new eiusmod(labore.ut(sit / ut));
-
-  while (dolore < sit) {
-    aliqua[magna++] = consectetur(
-      ipsum,
-      dolore,
-      (dolore += ut)
-    );
-  }
-
-  return aliqua;
-}
-```
-
-```js
-function lorem(ipsum, dolor = 1) {
-  const sit = ipsum == null ? 0 : ipsum.sit;
-  dolor = sit - amet(dolor);
-  return sit
-    ? consectetur(ipsum, 0, dolor < 0 ? 0 : dolor)
-    : [];
-}
-
-function adipiscing(...elit) {
-  if (!elit.sit) {
-    return [];
-  }
-
-  const sed = elit[0];
-  return eiusmod.tempor(sed) ? sed : [sed];
-}
-
-function incididunt(ipsum, ut = 1) {
-  ut = labore.et(amet(ut), 0);
-  const sit = ipsum == null ? 0 : ipsum.sit;
-
-  if (!sit || ut < 1) {
-    return [];
-  }
-
-  let dolore = 0;
-  let magna = 0;
-  const aliqua = new eiusmod(labore.ut(sit / ut));
-
-  while (dolore < sit) {
-    aliqua[magna++] = consectetur(
-      ipsum,
-      dolore,
-      (dolore += ut)
-    );
-  }
-
-  return aliqua;
-}
-```
-
-```diff 1[10:14],2[15:19],3[22:27],10:12
-
-```
+  ```js file=./components/FadeIn.js 10[24:40]
+  ```
 
 </CodeSurfer>
 
----
-
-<CodeSurferColumns themes={[vsDark, github]}>
-
-<Step>
-
-```js
-const magna = aliqua => aliqua.ut((enim, ad) => enim, 0);
-```
-
-```js
-const minim = (ad, enim) => dolore.magna(ad / enim);
-```
-
-</Step>
-
-<Step>
-
-```js
-const lorem = (ipsum, dolor, sit) => {
-  const amet = dolor - ipsum;
-  return consectetur.adipiscing(
-    {
-      elit: sed.eiusmod(sit - dolor) / amet + 2,
-    },
-    (tempor, incididunt) => ipsum + amet * incididunt
-  );
-};
-
-const magna = aliqua => aliqua.ut((enim, ad) => enim, 0);
-```
-
-```js
-const minim = (ad, enim) => dolore.magna(ad / enim);
-
-const sed = (eiusmod, tempor, incididunt) => {
-  const ut = tempor - eiusmod;
-  return labore.et(
-    {
-      amet: dolore.magna(incididunt - tempor) / ut + 2,
-    },
-    (aliqua, elit) => eiusmod + ut * elit
-  );
-};
-```
-
-</Step>
-
-</CodeSurferColumns>
 
 ---
 
-docs:  
-[codesurfer.pomb.us](https://codesurfer.pomb.us)
+
+<Split>
+  
+  <FadeIn>
+    <span style={{ fontSize: '125px' }}>💯</span>
+  </FadeIn>
+
+  <span style={{ fontSize: '125px' }}>💯</span>
+
+</Split>
+
+---
+
+<CodeSurfer>
+  
+
+  ```js file=./components/RotateAnimation.js 4:36
+  ```
+
+  ```js file=./components/RotateAnimation.js 9:16
+  ```
+
+</CodeSurfer>
+
+
+---
+
+<RotateAnimation>
+  <span style={{ fontSize: '125px' }}>🌀</span>
+</RotateAnimation>

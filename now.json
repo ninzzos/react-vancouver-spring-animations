@@ -1,0 +1,18 @@
+{
+  "version": 2,
+  "builds": [
+    { "src": "*.jpg", "use": "@now/static"  },
+    { "src": "*.svg", "use": "@now/static"  },
+    {
+      "src": "package.json",
+      "use": "@now/static-build"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/([0-9][0-9])",
+      "headers": { "cache-control": "s-maxage=0" },
+      "dest": "/index.html"    
+    }
+  ]
+}

@@ -1,6 +1,7 @@
 {
-  "private": true,
+  "private": false,
   "version": "1.0.0",
+  "homepage": "https://jdmg94.github.io/react-vancouver-spring-animations",
   "repository": "https://github.com/jdmg94/react-vancouver-spring-animations.git",
   "scripts": {
     "start": "mdx-deck deck.mdx",

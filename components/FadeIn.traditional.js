@@ -1,8 +1,8 @@
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import Animated from "animated/lib/targets/react-dom";
 
 const Fade = ({ duration = 1500, children }) => {
-  const opacity = new Animated.Value(0);
+  const [opacity] = useState(new Animated.Value(0));
 
   useEffect(() => {
     Animated.timing(opacity, {

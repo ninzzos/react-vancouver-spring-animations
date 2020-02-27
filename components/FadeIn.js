@@ -1,5 +1,5 @@
 import React from 'react'
-import { useSpring, animated } from 'react-spring'
+import { useSpring, animated as Animated } from 'react-spring'
 
 const FadeIn = ({ children }) => {
   const animation = useSpring({
@@ -7,7 +7,7 @@ const FadeIn = ({ children }) => {
     to: { opacity: 1 }
   })
 
-  return <animated.div style={animation}>{children}</animated.div>
+  return <Animated.div style={animation}>{children}</Animated.div>
 }
 
 export default FadeIn

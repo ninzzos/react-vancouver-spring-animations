@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useSpring, animated, config } from "react-spring";
+import { useSpring, animated } from "react-spring";
 
 const initialAnimationState = {
   opacity: 0,
@@ -17,8 +17,7 @@ const finalAnimationState = {
 const RotateAnimation = ({ children }) => {
   const [reset, setReset] = useState(true);
   const animation = useSpring({
-    reset,
-    config: config.wobbly,
+    reset,    
     to: finalAnimationState,
     from: initialAnimationState,
     onRest: () => setReset(false),

@@ -1,7 +1,7 @@
 import React from "react";
 import clamp from "lodash-es/clamp";
 import { useGesture } from "react-with-gesture";
-import { animated, useSpring } from "react-spring";
+import { animated, useSpring, config } from "react-spring";
 
 const PullRelease = () => {
   const [{ xy }, set] = useSpring(() => ({ xy: [0, 0] }));
@@ -9,11 +9,11 @@ const PullRelease = () => {
     velocity = clamp(velocity, 1, 8);
     set({
       xy: down ? delta : [0, 0],
-      config: {
-        friction: 50,
+      config: down ? {
+        friction: 45,
         mass: velocity,
         tension: 500 * velocity,
-      },
+      } : config.wobbly,
     });
   });
 
@@ -33,7 +33,7 @@ const PullRelease = () => {
         alignItems: "center",
         justifyContent: "center",
         backgroundColor: "hotpink",
-        boxShadow: "-1px 2px 3px #8888",
+        boxShadow: "0px 0px 5px #FFF8",
         transform: xy.interpolate(
           (x, y) => `translate3d(${x}px,${y}px,0)`
         ),

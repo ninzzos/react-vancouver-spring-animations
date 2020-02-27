@@ -1,11 +1,18 @@
-import { Appear, Notes, Image, Split } from "mdx-deck";
+import QrCode from 'qrcode.react'
 import { CodeSurfer } from "code-surfer";
 import { nightOwl } from "@code-surfer/themes";
+import { Appear, Notes, Image, Split } from "mdx-deck";
 import { TwitterTweetEmbed } from "react-twitter-embed";
 
+import Abramov from "./components/Dan";
 import FadeIn from "./components/FadeIn";
-import Spring from './components/SpringLogo'
-import PullRelease from './components/PullRelease'
+import ScaleIn from './components/ScaleIn';
+import Emoji from './components/transition';
+import Spring from "./components/SpringLogo";
+import Honduras from "./components/Honduras";
+import Comparison from './components/Comparison';
+import PullRelease from "./components/PullRelease";
+import ThereAndBack from './components/ThereAndBack';
 import RotateAnimation from "./components/RotateAnimation";
 
 export const theme = nightOwl;
@@ -14,77 +21,248 @@ export const theme = nightOwl;
 
 <Appear>
   <p>My name is José Muñoz</p>
-  <p>I'm 25 Years old 🕺🏽</p>
-  <p>I'm Honduran 🇭🇳</p>
   <span>I'm a Software Engineer 🧑🏽‍💻</span>
+  <span>Made in Honduras 🇭🇳</span>
 </Appear>
 <Notes>
-  Hi, My name is Jose Munoz, I moved to Vancouver in late
-  November last year, I’ve been a Software Engineer for
-  about 5 years now, I’ve worked on both North and South
-  America, I’m originally from Honduras. , I tried showing
-  this to my mom but she doesn’t know who he is.
+  I moved to Vancouver last year in late November, 
+  A quick intro about me: I like movies, I like gokarts, I like eating out and dancing,
+  tomorrow's salsa night, just fyi.
+</Notes>
+
+---
+
+<Honduras />
+
+<Notes>
+  This is a picture of Honduras, where I come from.
+  I've been working as a software engineer for about 6 years,
+  half of that has been dedicated to React and React-native.
+  And know that you know a little bit more about me
 </Notes>
 
 ---
 
 <RotateAnimation>
-  I'm here to talk about Spring Animations in React-Native
+  I'm here to talk about Animations in React-Native
 </RotateAnimation>
+
+<Notes>
+  In mobile applications, animations give the user an extra layer of interactivity that, 
+  in theory, would give a more natural and fluid experience, animations are the developer's 
+  way of putting real-world physics into our app's UI. If there is something that the native 
+  applications have always had the upper hand with is animations
+</Notes>
+
+---
+
+#### Why are Animations important?
+
+<Notes>  
+  modern day user applications can't afford to just pop things in and out of the screen. 
+  Today, I want to talk about how we think about animations, what the experts say,
+  and the things we can improve. After the slides I'm going to do a live coding segment
+  if you want to follow along, I'm going to be using expo, so heads up, download the expo client
+  on your phones.
+</Notes>
+
+---
+
+<ScaleIn>
+  <h3>Animated API</h3>
+</ScaleIn>
+
+<Notes>
+  Let's start with the Animated API, in React-Native its the de-facto way of doing animations.
+  The Animated library is designed to make animations fluid and powerful.
+  It obtains performance by using raw manipulation behind the scenes instead of the usual diff.
+</Notes>
+
+---
+
+<CodeSurfer>
+
+  ```js file=./components/FadeIn.traditional.js 3:20
+  ```
+
+  ```js file=./components/FadeIn.traditional.js 5
+  ```
+
+  ```js file=./components/FadeIn.traditional.js 8:11
+  ```
+
+  ```js file=./components/FadeIn.traditional.js 15:18
+  ```
+
+  ```js file=./components/FadeIn.traditional.js 8[5:19]
+  ```
+
+</CodeSurfer>
+
+<Notes>
+  Let's take a look at a basic fadein example
+  There are 3 basic steps required to create an animation.
+
+  first we declare a new animated value which is going to represent our starting point.
+  
+
+  then, when the component mounts we set a duration and destination value and we start animating
+
+
+  and finally, we pass the animated values inline to our special animated component
+
+
+  In most cases, you will be using the timing function. By default, it uses a symmetric easeInOut curve 
+  that conveys the gradual acceleration of an object to full speed and concludes by gradually decelerating to a stop.
+</Notes>
 
 ---
 
 <FadeIn>
-  When Dealing with Animations, do any of these sound
-  familiar? 🤔
+  <span style={{ fontSize: "125px", margin: 15 }}>💯</span>
 </FadeIn>
-<Appear>
-  <p>Easing ↔️</p>
-  <p>Timing ⏰</p>
-  <p>Curves 〰️</p>
-  <p>Duration ⏳</p>
-</Appear>
+
 <Notes>
-  We think of animation in terms of time and curves, but
-  that in itself causes most of the struggle we face when
-  trying to make elements on the screen move naturally, 
-  what if the user cancels the interaction, should going back
-  be the same duration even though we're not all the way done?
-  Nothing in the real world moves like that.
+  This is the example we just looked at, very hard to screw up fade in.
+  For simple animations this model works very well, and it is the dominant 
+  paradigm in react-native animation, swedish developer William Candillon 
+  runs a popular youtube series called "can it be done in react-native" that focuses 
+  on recreating several well-known or very interesting animations in react-native.
+</Notes>
+
+---
+
+<FadeIn>
+  <p>When dealing with Animations, do any of these sound
+  familiar? 🤔</p>
+</FadeIn>
+<br />
+<br />
+<Appear>
+  <span>Easing ↔️</span>
+  <span>Timing ⏰</span>
+  <span>Curves 〰️</span>
+  <span>Duration ⏳</span>
+</Appear>
+
+<Notes>
+  As a developer, the mental model is that most animations are fire and forget. 
+  When the user presses the button, you want it to shrink to 80% and when it releases, you want it to go back to 100%.
+  There are multiple challenges to implement this correctly. You need to stop the current animation, grab the current 
+  value and restart an animation from there. We are so used to time-based animation that we believe that struggle is normal, 
+  dealing with arbitrary curves, easings, time waterfalls, not to mention getting this all in sync.
+  We think of animation in terms of time and curves, but that in itself causes most of the struggle we face when
+  trying to make elements on the screen move naturally.
 </Notes>
 
 ---
 
 <TwitterTweetEmbed tweetId="566736015188963328" />
+
 <Appear>
-  <p>(former Apple UI-Kit developer)</p>  
+  <p>(former Apple UI-Kit developer)</p>
 </Appear>
 
 <Notes>
-  Andy Matuschak 
-
-  Springs change that, a spring does not have a defined curve or a set duration, springs are cancellable,
-  everything you do looks and feels natural by default, animation becomes easy and approachable.
-  To better illustrate how a spring works, let’s take a look at an online tool called spring visualizer.
-</Notes>
-
----
-
-<Spring height="120rem" width="120rem" />
-
-# Enter React-Spring
-
-<Notes>
-  With React-native...
+  This is Andy Matuschak, former apple UI-kit developer, back in 2015 he said:  
+  For a while now, we've been transfering our CSS knowledge into react and react-native. In CSS animations
+  are mostly time-based, so when we hit the limitations of the react styling system in both web and native,
+  the first solutions where the ones we were already familiar with, time-based, curves calculated over Easing
+  functions, all which worked pretty well on CSS which is one of the first things you learn in web development.  
 </Notes>
 
 ---
 
 <PullRelease />
 
+<Notes>  
+  The commonly used solution for this problem is to use the equation of a real-world spring. 
+  Imagine that you attach a spring to the target value, stretch it to a destination value and let it go.  
+</Notes>
+
+---
+
+<Comparison />
+
 <Appear>
-  <a href="https://react-spring-visualizer.com/#translateY" target="_blank" rel="noopener noreferrer">Spring Visualizer</a>
+  <a href="https://react-spring-visualizer.com/" target="_blank" rel="noopener noreferrer">Spring Visualizer</a>
 </Appear>
+
+
+<Notes>
+  The animated API has built-in support for spring animations, which is great!
+  You can see here a comparison between both models, one is calculated using a 
+  linear easing, the other one is using spring physics, both have around the same
+  duration, however the latter has a better feel to it. The main advantage that 
+  spring has is because its based on physics they can be cancelled. Wherever the element
+  happens to be on the screen it will only spring back, you don't have to retrofit the 
+  calculated curve into a different duration if the user cancels an interaction.
+</Notes>
+
+---
+
+<FadeIn>
+  <p>We want Animations <Appear><span>that are: </span></Appear></p>
+</FadeIn>
+  <br />
+<Appear>
+  <br />
+  <span>Performant 🏃🏽‍♀️</span>
+  <span>Natural 🌱</span>
+  <span>Easy to write ✏️</span>
+  <span>Easy to scale 👯‍♀️</span>
+</Appear>
+
+<Notes>
+  With the Animated API and its spring functions we can achieve smooth, natural, and performant animations.
+  But the API is still too imperative, getting multiple animated values in sync can be an issue, it feels
+  like there is still a gap between simple animations and complex, multi-stage aniamtions, a missing abstraction
+  that can bridge performant animations and scalable code.
+</Notes>
+
+---
+
+<Spring height="120rem" width="120rem" />
+
+# React-Spring
+
+<Appear>
+  <span>Made by Paul Henschel (@0xca0a)</span>
+</Appear>
+
+<Notes>
+  In order to fill in that missing abstraction, I like to use React Spring. 
+  React Spring is a thin wrapper that makes animating elements easy and super declarative.
+  It's based on the Animated API so it inherits animated's powerful interpolations and performance, 
+  with enhanced useability and it is under 7kb for the universal export or about 10kb for the 
+  platform-specific exports. This library represents a modern approach to animation but, you might
+  be wondering, does it have any credibility? What do the experts think about it?
+</Notes>
+
+---
+
+<TwitterTweetEmbed tweetId="1033964001246543872" />
+
+<Notes>
+  This is Ryan Florence, you may have heard about one of his projects,
+  React-router, reach-ui. This other guy replying here has a site you
+  you may have heard of, its called codesandbox.
+</Notes>
+
+
+---
+
+<TwitterTweetEmbed tweetId="1006931395003015170" />
+
+<Notes>
+  When asked about react animations, this member of the react team
+  had this to say. 
+</Notes>
+
+---
+
+<Abramov />
+
 
 ---
 
@@ -93,44 +271,157 @@ export const theme = nightOwl;
   ```js file=./components/FadeIn.js 4:11
   ```
 
-  ```js file=./components/FadeIn.js 6[5:9],7[5:7]
+  ```js file=./components/FadeIn.js 6[5:25],7[5:23]
   ```
 
-  ```js file=./components/FadeIn.js 10[24:40]
+  ```js file=./components/FadeIn.js 10
   ```
 
 </CodeSurfer>
 
+<Notes>
+  Let's revisit the fadein example with react-spring. Using custom react hooks
+  you can easily declare the states from and to, point A to point B. You pass 
+  those styles to your custom animated component and that's literally it.
+</Notes>
 
 ---
 
 
 <Split>
-  
-  <FadeIn>
-    <span style={{ fontSize: '125px' }}>💯</span>
-  </FadeIn>
-
-  <span style={{ fontSize: '125px' }}>💯</span>
-
+  <h3 style={{ margin: '0 5rem 0 0', textAlign: 'center',  fontSize: '16rem' }}>UX</h3>
+  <Appear>
+    <h3 style={{ margin: '0 0 0 5rem', textAlign: 'center',  fontSize: '16rem' }}>DX</h3>
+  </Appear>
 </Split>
+
+<Notes>
+  not only do we get the UX for free, the developer experience is now on a better abstraction
+  level, making animations less verbose, more declarative, and easily understandable.
+  We can make powerful animations with the custom hooks exposed on react-spring, I want to
+  show another hook called useTransition, which is great for things like navigation animations,
+  multi-stage and/or async animations.
+</Notes>
 
 ---
 
-<CodeSurfer>
-  
 
-  ```js file=./components/RotateAnimation.js 4:36
+<CodeSurfer>
+
+  ```js file=./components/transition.js 8:45
   ```
 
-  ```js file=./components/RotateAnimation.js 9:16
+  ```js file=./components/transition.js 24
+  ```
+
+  ```js file=./components/transition.js 24[37:43]
+  ```
+
+  ```js file=./components/transition.js 24[45:49]
+  ```
+
+  ```js file=./components/transition.js 25[5:26]
+  ```
+
+  ```js file=./components/transition.js 26[5:27]
+  ```
+
+  ```js file=./components/transition.js 27[5:27]
+  ```
+
+  ```js file=./components/transition.js 24[9:20]
+  ```
+
+  ```js file=./components/transition.js 31
+  ```
+
+  ```js file=./components/transition.js 32[8:12]
+  ```
+
+  ```js file=./components/transition.js 41[10:14]
+  ```
+
+  ```js file=./components/transition.js 32[14:17]
+  ```
+
+  ```js file=./components/transition.js 34
+  ```
+
+  ```js file=./components/transition.js 32[19:37]
+  ```
+
+  ```js file=./components/transition.js 36
+  ```
+
+  ```js file=./components/transition.js 8:45
   ```
 
 </CodeSurfer>
 
+<Notes>
+  We're going to be switching between these emoji faces, in a fade-in, fade-out transition.
+  The transition hook is different from the spring hook in a couple of hey ways. First it
+  supports animating an array of elements, extracting the keys for each element, and  then 
+  applying the correct animation to each element, which is quite an impressive feat if you consider
+  how we started declaring animated values one at a time. This hook returns an array with all the
+  elements we need to render our animation, we have to return the transition array and map over it
+  each iteration receives 3 important named variables, item, which represents the current item we're mapping
+  it is either the first argument we passed or an index of it. The second named element is "key" and this is
+  the product of the second argument passed to the transition hook, in this case, it's not relevant, we're only
+  passing it in order to not piss off the warning system. the third named element is called "props" and I think
+  this is a bit misleading, these are the animation props, so you would ideally pass this object directly into
+  your animated component's inline styles. I like to de-structure its content's as I feel it gives me more flexibility.
+  from there on you just return the element you wanted to animate with the given values and let the magic happen.
+</Notes>
 
 ---
 
-<RotateAnimation>
-  <span style={{ fontSize: '125px' }}>🌀</span>
-</RotateAnimation>
+<Emoji />
+
+<Notes>
+  This is the code we were just looking at. And with these two hooks we've seen today we can achieve incredible things,
+  yes the transition hook might require some explaining, but it scales beautifully.
+</Notes>
+
+---
+
+
+## Demo Time
+
+<Notes>
+  So far we've been looking into react-spring and animations exclusively, and this talk
+  I originally imagined would be at the react-native meetup, however, I have not forsaken
+  my mobile engineers in the room. Using the two concepts we just saw, I'm going to implement
+  a multi-platform action sheet, this is the part where you can follow along with your phones
+  using the expo client.
+</Notes>
+
+---
+
+ <QrCode size={512} value="exp://expo.io/@jdmg94/react-spring-universal-examples" />
+
+<Appear>
+  <p>For more examples scan here</p>
+  <span>(use the expo client app)</span>
+</Appear>
+
+<Notes>
+  I've compiled some more animation examples on this app,
+  not all of them work on all platforms but all of them run
+  on most platforms. Android has its quirks with things like
+  the motion sensors and stuff, so the ecosystem still has room
+  for improvement.
+</Notes>
+
+---
+
+# One More thing
+
+<Appear>
+  <p>🌐 It all works on web too!</p>
+</Appear>
+
+<Notes>
+  Lastly, I want to point out that everything we did on our live-code 
+  and the other examples project work on web too!
+</Notes>

@@ -1,10 +1,13 @@
 {
   "private": true,
   "version": "1.0.0",
+  "homepage": "https://jdmg94.github.io/react-vancouver-spring-animations",
+  "repository": "https://github.com/jdmg94/react-vancouver-spring-animations.git",
   "scripts": {
     "start": "mdx-deck deck.mdx",
     "build": "mdx-deck build deck.mdx",
-    "test": "echo \"there are no tests\""
+    "test": "echo \"there are no tests\"",
+    "deploy": "gh-pages -d ./public"
   },
   "devDependencies": {
     "code-surfer": "3.0.0",
@@ -13,7 +16,10 @@
   "name": "react-vancouver-native-spring-animations",
   "dependencies": {
     "@code-surfer/themes": "^3.0.0",
+    "animated": "^0.2.2",
+    "gh-pages": "^2.2.0",
     "lodash-es": "^4.17.15",
+    "qrcode.react": "^1.0.0",
     "react-spring": "^8.0.27",
     "react-twitter-embed": "^3.0.3",
     "react-with-gesture": "^4.0.8"

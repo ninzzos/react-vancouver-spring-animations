@@ -1,6 +1,6 @@
 import React from "react";
 import ScaleIn from './ScaleIn'
-import HondurasImage from "../public/Honduras.jpg";
+import HondurasImage from "../Honduras.jpg";
 
 const Honduras = () => (
   <ScaleIn>
